@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ColorSwatch from './components/color-swatch';
 import EmptyColorSwatch from './components/empty-color-swatch';
@@ -7,8 +7,18 @@ import './App.scss';
 function App() {
   const [colors, setColors] = useState([]);
 
+  useEffect(() => {
+    let colorSwatch = localStorage.getItem("colorSwatch");
+    if (JSON.parse(colorSwatch)) {
+      setColors([...JSON.parse(colorSwatch)]);
+    }
+  }, []);
+
   const updateColors = (toRemoveIndex) => {
-    setColors(colors.filter(color => colors.indexOf(color) !== toRemoveIndex))
+    let updatedColorSwatch = colors.filter(color => colors.indexOf(color) !== toRemoveIndex);
+
+    setColors(updatedColorSwatch);
+    localStorage.setItem("colorSwatch", JSON.stringify(updatedColorSwatch));
   };
 
   const addColor = () => {
@@ -19,9 +29,10 @@ function App() {
       }
       return rendomeNr();
     };
-
     let color = `#${rendomeNr()}${rendomeNr()}${rendomeNr()}`;
-    setColors([color, ...colors])
+
+    setColors([color, ...colors]);
+    localStorage.setItem("colorSwatch", JSON.stringify([color, ...colors]));
   };
 
   return (
