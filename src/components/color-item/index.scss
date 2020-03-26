@@ -1,7 +1,7 @@
 li {
   list-style: none;
   text-align: center;
-  padding: 10px;
+  padding: 10px 0 0;
   margin-bottom: 20px;
 
   .color-box {
@@ -27,6 +27,28 @@ li {
 
     &:hover {
       color: rgba(2, 110, 173, 0.984);
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  li {
+    margin-bottom: 20px;
+    margin-right: 10px;
+
+    .color-box {
+      display: block;
+      height: 100px;
+      width: 150px;
+      border-radius: 5px;
+    }
+    span {
+      padding: 20px 0 10px;
+      font-size: 1rem;
+    }
+  
+    a {
+      font-size: .9rem;
     }
   }
 }

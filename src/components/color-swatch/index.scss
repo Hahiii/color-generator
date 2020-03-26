@@ -9,3 +9,10 @@ ul {
   flex-wrap: wrap;
   flex: 1;
 }
+
+@media (max-width: 700px) {
+  ul {
+    justify-content: space-around;
+    padding: 40px 0px;
+  }
+}

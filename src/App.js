@@ -12,6 +12,7 @@ function App() {
     if (JSON.parse(colorSwatch)) {
       setColors([...JSON.parse(colorSwatch)]);
     }
+    // eslint-disable-next-line
   }, []);
 
   const updateColors = (toRemoveIndex) => {
